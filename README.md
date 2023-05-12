@@ -60,7 +60,7 @@ Contains a listing of 1253 words/phrases separated by newlines.  This file will 
 
 ## IntroToCStringLib
 
-This contains the header and implementation for two functions to convert an int to a CString.  You don’t need to use this, but I included it in case you want to convert an int to a CString.
+This contains the header and implementation for two functions to convert an int to a CString.  You don’t need to use this, but I included it in case you want to convert an int to a CString. (IntToCStringLib.o is unreadable to me so idk if we can even use this if we wanted to.)
 
     IntToCStringLib.h -- A header file that contains the function prototypes of the two functions and a description of how to use them.
 
