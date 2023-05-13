@@ -75,3 +75,7 @@ Screenshots of the prompt:
 ![Screenshot 2023-05-11 194719](https://github.com/Nyriki/CSnowman/assets/76397078/ec356d48-b068-44f5-95d4-df46ab307394)
 ![Screenshot 2023-05-11 194955](https://github.com/Nyriki/CSnowman/assets/76397078/9919386b-6d4b-4ef9-9249-bf6c8ce3337a)
 ![Screenshot 2023-05-11 195023](https://github.com/Nyriki/CSnowman/assets/76397078/4a2cda22-4773-4c9d-88a3-db9cd97c43f0)
+
+Snippet of CSnowmanGame.cpp code I didn't transcribe:
+![Screenshot 2023-05-13 124843](https://github.com/Nyriki/CSnowman/assets/76397078/56d87d71-2d50-4bbe-bdc6-d3e44f145d47)
+
