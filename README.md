@@ -3,8 +3,8 @@
 Unfortunately I simply can't view some files so we'll have to ignore **SampleExecutable.out** and the IntToCStringLib files.
 
 ## Sample Output
-It should look like this.
-https://youtu.be/1C9ZrDrdiow
+It should look like this: https://youtu.be/1C9ZrDrdiow
+
 Note: any letter besides y/Y acts like N when asked if you want to replay
 
 # Objective
