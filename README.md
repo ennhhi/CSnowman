@@ -1,5 +1,6 @@
 # CSnowman
-I'm gonna copy relevant info from the assignment prompt. Sorry in advance for the terrible formatting lol. Screenshots of the prompt will be below if you prefer that.
+## I'm gonna copy relevant info from the assignment prompt. Sorry in advance for the terrible formatting lol. Screenshots of the prompt will be below if you prefer that.
+Unfortunately I simply can't view some files so we'll have to ignore **SampleExecutable.out** and the IntToCStringLib files.
 ---------------
 
 # Objective
