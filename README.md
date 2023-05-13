@@ -1,7 +1,11 @@
 # CSnowman
 ## I'm gonna copy relevant info from the assignment prompt. Sorry in advance for the terrible formatting lol. Screenshots of the prompt will be below if you prefer that.
 Unfortunately I simply can't view some files so we'll have to ignore **SampleExecutable.out** and the IntToCStringLib files.
----------------
+
+## Sample Output
+It should look like this.
+https://youtu.be/1C9ZrDrdiow
+Note: any letter besides y/Y acts like N when asked if you want to replay
 
 # Objective
 Your objective for this project is to work on several classes to construct a game called CSnowman.  It is the politically correct version for “Hangman” with the same rules.  You’ll have eight (8) tries to guess the correct word/phrase.  For every incorrect guess, a body part of the snowman will be drawn. Now how will the game be constructed and what classes are we going to make in order for the game to work?
