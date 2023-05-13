@@ -134,7 +134,7 @@ using namespace std;
 //
 // ===================================================
 
-// The rest of this file is code for the "graphics" of the game. They seem to be already done and way too difficult to copy. See screenshot for an idea of what I mean lol.
+// The rest of this file is code for the "graphics" of the game. They seem to be already done and way too difficult to copy. See screenshots in readme for an idea of what I mean lol.
 // Functions not written:
 // DispTitle
 // DispSnowmanTitle
