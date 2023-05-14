@@ -11,7 +11,9 @@ using namespace std;
 
 // === CPlayer::CPlayer ===============================
 //
-// This is the CPlayer default constructor. It allocated space from the HEAP and initializes the private data member m_name to "Guest Player." Furthermore, it sets m_gameResetted to false.
+// This is the CPlayer default constructor. It allocated space from the 
+// HEAP and initializes the private data member m_name to "Guest Player." 
+// Furthermore, it sets m_gameResetted to false.
 //
 // Input:
 //		none
@@ -24,7 +26,9 @@ using namespace std;
 
 
 // === CPlayer::CPlayer ===============================
-// This is the CPlayer type constructor. It uses the parameter to allocate space from the HEAP and initializes the private data member m_name. Furthermore, it sets m_gameResetted to false.
+// This is the CPlayer type constructor. It uses the parameter to allocate 
+// space from the HEAP and initializes the private data member m_name. 
+// Furthermore, it sets m_gameResetted to false.
 //
 // Input:
 //		name	[IN]	-- a char pointer to a given name
@@ -51,7 +55,8 @@ using namespace std;
 
 // === CPlayer::SetName ===============================
 //
-// The SetName function uses the parameter to update the private data member m_name. Be sure you have exactly the space needed to store the new name.
+// The SetName function uses the parameter to update the private data member 
+// m_name. Be sure you have exactly the space needed to store the new name.
 //
 // Input:
 //		name	[IN]	-- a char pointer to a given name
@@ -83,7 +88,11 @@ using namespace std;
 
 // === CPlayer::Start =================================
 //
-// The Start function uses the CSnowmanGame object to begin the game by calling its public member function Start. Before calling the Start function and if the game has not been resetted, the program will display a welcoming message and a game loading message. Afterwards the program will sleep for SLEEP_NUM_PLAYER seconds.
+// The Start function uses the CSnowmanGame object to begin the game by calling 
+// its public member function Start. Before calling the Start function and if 
+// the game has not been resetted, the program will display a welcoming message 
+// and a game loading message. Afterwards the program will sleep for 
+// SLEEP_NUM_PLAYER seconds.
 //
 // Input:
 //		none
