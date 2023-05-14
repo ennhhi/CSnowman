@@ -22,7 +22,7 @@ public:
 
 private:
 	char* m_words[NUM_WORDS];	// NUM_WORDS pointers to a char
-	int m_numWords;				// total words actually read from the file
+	int m_numWords;			// total words actually read from the file
 };
 
 #endif /* CWords_h */
