@@ -11,7 +11,9 @@ using namespace std;
 
 // === CWords::CWords ================================
 // 
-// This is the CWords default constructor. It initializes the private data members. It sets m_numWords to zero, allocates space for m_words, and calls the ReadFile function.
+// This is the CWords default constructor. It initializes the private data 
+// members. It sets m_numWords to zero, allocates space for m_words, and 
+// calls the ReadFile function.
 // 
 // Input:
 //		none
@@ -35,7 +37,10 @@ using namespace std;
 
 // === CWords::GetRandomWord =========================
 //
-// This function randomly selects a word from m_words and returns it as a const char pointer. It must first seed the random function (srand) to the current time to start the randomness. Then use the random function (rand) to randomly select a word.
+// This function randomly selects a word from m_words and returns it as a 
+// const char pointer. It must first seed the random function (srand) to the 
+// current time to start the randomness. Then use the random function (rand) 
+// to randomly select a word.
 //
 // Input:
 //		none
