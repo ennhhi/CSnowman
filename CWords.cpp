@@ -55,7 +55,11 @@ using namespace std;
 
 // === CWords::ReadFile ==============================
 //
-// This function reads the contents of the file that has a word separated by a new line. As a note, the word can be a combination of two words (as a name in this case). You will read the contents of the file until there are no more words to read or NUM_WORDS has been exhausted. As you read each word, be sure to update m_numWords (number of words read).
+// This function reads the contents of the file that has a word separated by 
+// a new line. As a note, the word can be a combination of two words (as a 
+// name in this case). You will read the contents of the file until there are 
+// no more words to read or NUM_WORDS has been exhausted. As you read each 
+// word, be sure to update m_numWords (number of words read).
 // 
 // Input:
 //		none
