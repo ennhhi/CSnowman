@@ -4,7 +4,7 @@
 #ifndef CWords_h
 #define CWords_h
 
-const int NUM_WORDS = 30;	// number of words in the file
+const int NUM_WORDS = 30;	// number of words (functionally the number of newlines) in the file
 const int CHAR_SIZE = 256;
 
 class CWords
