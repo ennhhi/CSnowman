@@ -1,5 +1,6 @@
 // File: CPlayer.h
-// This header file contains the declaration for the CPlayer class. The class is used in CSnowmanGame to create the player.
+// This header file contains the declaration for the CPlayer 
+// class. The class is used in CSnowmanGame to create the player.
 
 #include "CSnowmanGame.h"
 
