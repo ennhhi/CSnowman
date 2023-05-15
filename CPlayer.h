@@ -27,7 +27,7 @@ public:
 	void Reset();
 
 private:
-	char* m_name;			// store player's name
+	char* m_name;		// store player's name
 	bool m_gameResetted;	// bool to check if game has been resetted
 	CSnowmanGame m_game;	// object used to create the Snowman game
 };
