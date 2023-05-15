@@ -19,7 +19,7 @@ using namespace std;
 //		none
 //
 // ====================================================
-// code goes here
+// code goes under each description
 
 
 
