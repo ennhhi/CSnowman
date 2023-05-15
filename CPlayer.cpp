@@ -108,7 +108,10 @@ using namespace std;
 
 // === CPlayer::Reset =================================
 //
-// The Reset function uses the CSnowmanGame object to restart the game by calling its public member function Reset. Before calling the Reset function the program wil display a restarting and reloading message. Afterwards the program will sleep for SLEEP_NUM_PLAYER seconds.
+// The Reset function uses the CSnowmanGame object to restart the game by calling 
+// its public member function Reset. Before calling the Reset function the program 
+// wil display a restarting and reloading message. Afterwards the program will 
+// sleep for SLEEP_NUM_PLAYER seconds.
 //
 // Input:
 //		none
