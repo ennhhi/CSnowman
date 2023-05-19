@@ -7,7 +7,7 @@
 #include "CPlayer.h"
 using namespace std;
 
-
+const int SLEEP_NUM_PLAYER = 1;
 
 // === CPlayer::CPlayer ===============================
 //
@@ -19,11 +19,12 @@ using namespace std;
 //		none
 //
 // ====================================================
-// code goes under each description
-
-
-
-
+CPlayer::CPlayer()
+{
+    m_name = new char[strlen("Guest Player") + 1];
+    strcpy(m_name, "Guest Player");
+    m_gameResetted = false;
+}
 
 // === CPlayer::CPlayer ===============================
 // This is the CPlayer type constructor. It uses the parameter to allocate 
@@ -34,11 +35,12 @@ using namespace std;
 //		name	[IN]	-- a char pointer to a given name
 //
 // ====================================================
-
-
-
-
-
+CPlayer::CPlayer(const char* name)
+{
+    m_name = new char[strlen(name) + 1];
+    strcpy(m_name, name);
+    m_gameResetted = false;
+}
 
 // === CPlayer::~CPlayer ==============================
 //
@@ -48,10 +50,10 @@ using namespace std;
 //		none
 //
 // ====================================================
-
-
-
-
+CPlayer::~CPlayer()
+{
+    delete[] m_name;
+}
 
 // === CPlayer::SetName ===============================
 //
@@ -65,11 +67,12 @@ using namespace std;
 //		none
 //
 // ====================================================
-
-
-
-
-
+void CPlayer::SetName(const char* name)
+{
+    delete[] m_name;
+    m_name = new char[strlen(name) + 1];
+    strcpy(m_name, name);
+}
 
 // === CPlayer::GetName ===============================
 //
@@ -82,9 +85,10 @@ using namespace std;
 //		a const char*
 //
 // ====================================================
-
-
-
+const char* CPlayer::GetName() const
+{
+    return m_name;
+}
 
 // === CPlayer::Start =================================
 //
@@ -101,10 +105,19 @@ using namespace std;
 //		none
 //
 // ====================================================
-
-
-
-
+void CPlayer::Start()
+{
+    CSnowmanGame game;
+    
+    if (!m_gameResetted)
+    {
+        cout << "Welcome, " << m_name << "!" << endl;
+        cout << "Loading game..." << endl;
+    }
+    
+    game.Start();
+    sleep(SLEEP_NUM_PLAYER);
+}
 
 // === CPlayer::Reset =================================
 //
@@ -120,3 +133,13 @@ using namespace std;
 //		none
 //
 // ====================================================
+void CPlayer::Reset()
+{
+    CSnowmanGame game;
+    
+    cout << "Restarting game..." << endl;
+    cout << "Reloading game..." << endl;
+    
+    game.Reset();
+    sleep(SLEEP_NUM_PLAYER);
+}
