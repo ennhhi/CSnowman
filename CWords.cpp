@@ -19,8 +19,12 @@ using namespace std;
 //		none
 // 
 // ===================================================
-
-
+CWords::CWords()
+{
+    m_numWords = 0;
+    m_words = new string[NUM_WORDS];
+    ReadFile();
+}
 
 
 // === CWords::~CWords ===============================
@@ -31,8 +35,10 @@ using namespace std;
 //		none
 //
 // ===================================================
-
-
+CWords::~CWords()
+{
+    delete[] m_words;
+}
 
 
 // === CWords::GetRandomWord =========================
@@ -49,8 +55,12 @@ using namespace std;
 //		a const char pointer that contains the string of the random word/phrase
 //
 // ===================================================
-
-
+const char* CWords::GetRandomWord()
+{
+    srand(time(nullptr));
+    int randomIndex = rand() % m_numWords;
+    return m_words[randomIndex].c_str();
+}
 
 
 // === CWords::ReadFile ==============================
@@ -65,3 +75,20 @@ using namespace std;
 //		none
 // 
 // ===================================================
+void CWords::ReadFile()
+{
+    ifstream file("words.txt");
+    if (!file)
+    {
+        cerr << "Error opening file." << endl;
+        exit(1);
+    }
+
+    string word;
+    while (getline(file, word) && m_numWords < NUM_WORDS)
+    {
+        m_words[m_numWords++] = word;
+    }
+
+    file.close();
+}
