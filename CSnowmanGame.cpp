@@ -16,7 +16,10 @@ using namespace std;
 //		none
 //
 // ===================================================
-
+CSnowmanGame::CSnowmanGame()
+{
+    Reset();
+}
 
 
 // === CSnowmanGame::Start ===========================
@@ -36,8 +39,32 @@ using namespace std;
 //		none
 //
 // ===================================================
+void CSnowmanGame::Start()
+{
+    system("clear");
+    DisplayTitle();
+    DrawSnowman();
+    DrawAvailLetters();
+    DrawNumTries();
+    DispWordDash();
 
+    while (true)
+    {
+        if (HasGuessedWord())
+        {
+            cout << "Congratulations! You guessed the word correctly!" << endl;
+            break;
+        }
 
+        if (m_numTries == MAX_TRIES)
+        {
+            cout << "Game over! You ran out of tries. The word was: " << m_wordToGuess << endl;
+            break;
+        }
+
+        GetUserGuess();
+    }
+}
 
 
 // === CSnowmanGame::Reset ===========================
@@ -52,7 +79,12 @@ using namespace std;
 //		none
 //
 // ===================================================
-
+void CSnowmanGame::Reset()
+{
+    m_wordToGuess = CWords::GetInstance().GetRandomWord();
+    m_numTries = 0;
+    memset(m_lettersInWord, false, sizeof(m_lettersInWord));
+}
 
 
 // === CSnowmanGame::DrawAvailLetters ================
@@ -70,8 +102,22 @@ using namespace std;
 //		none
 //
 // ===================================================
-
-
+void CSnowmanGame::DrawAvailLetters()
+{
+    cout << "Available letters: ";
+    for (char letter = 'A'; letter <= 'Z'; letter++)
+    {
+        if (!m_lettersInWord[letter - 'A'])
+        {
+            cout << letter << " ";
+        }
+        else
+        {
+            cout << "  ";
+        }
+    }
+    cout << endl;
+}
 
 
 // === CSnowmanGame::DispWordDash ====================
@@ -89,8 +135,29 @@ using namespace std;
 //		none
 //
 // ===================================================
-
-
+void CSnowmanGame::DispWordDash()
+{
+    cout << "Word to guess: ";
+    for (size_t i = 0; i < m_wordToGuess.length(); i++)
+    {
+        if (isalpha(m_wordToGuess[i]))
+        {
+            if (m_lettersInWord[toupper(m_wordToGuess[i]) - 'A'])
+            {
+                cout << m_wordToGuess[i] << " ";
+            }
+            else
+            {
+                cout << "_ ";
+            }
+        }
+        else
+        {
+            cout << m_wordToGuess[i] << " ";
+        }
+    }
+    cout << endl;
+}
 
 
 // === CSnowmanGame::GetUserGuess ====================
@@ -106,7 +173,45 @@ using namespace std;
 //		none
 //
 // ===================================================
+void CSnowmanGame::GetUserGuess()
+{
+    char guess;
+    cout << "Enter your guess: ";
+    cin >> guess;
+    guess = toupper(guess);
 
+    if (!IsValidGuess(guess))
+    {
+        cout << "Invalid guess! Please enter a valid alphabetical character." << endl;
+        sleep(SLEEP_NUM_SNOWMAN);
+        GetUserGuess();
+        return;
+    }
+
+    if (m_lettersInWord[guess - 'A'])
+    {
+        cout << "You've already guessed the letter '" << guess << "' before." << endl;
+        sleep(SLEEP_NUM_SNOWMAN);
+        GetUserGuess();
+        return;
+    }
+
+    m_lettersInWord[guess - 'A'] = true;
+    if (!IsCorrectGuess(guess))
+    {
+        cout << "Wrong guess! The letter '" << guess << "' is not in the word." << endl;
+        m_numTries++;
+        DrawSnowman();
+        DrawNumTries();
+        sleep(SLEEP_NUM_SNOWMAN);
+    }
+    else
+    {
+        cout << "Correct guess! The letter '" << guess << "' is in the word." << endl;
+        DispWordDash();
+        sleep(SLEEP_NUM_SNOWMAN);
+    }
+}
 
 
 
@@ -128,8 +233,26 @@ using namespace std;
 //		bool			-- true if the guess is valid, false otherwise
 //
 // ===================================================
+bool CSnowmanGame::IsValidGuess(char guess)
+{
+    guess = toupper(guess);
 
+    if (!isalpha(guess))
+    {
+        cout << "Invalid guess! Please enter an alphabetical character." << endl;
+        sleep(SLEEP_NUM_SNOWMAN);
+        return false;
+    }
 
+    if (m_lettersInWord[guess - 'A'])
+    {
+        cout << "You have already guessed that letter before." << endl;
+        sleep(SLEEP_NUM_SNOWMAN);
+        return false;
+    }
+
+    return true;
+}
 
 
 // === CSnowmanGame::GetNumUniqueLetters =============
@@ -144,7 +267,20 @@ using namespace std;
 //		int		-- number of unique letters in m_wordToGuess
 //
 // ===================================================
-
+int CSnowmanGame::GetNumUniqueLetters()
+{
+    memset(m_lettersInWord, 0, sizeof(m_lettersInWord));
+    int uniqueLetters = 0;
+    for (char c : m_wordToGuess)
+    {
+        if (isalpha(c) && !m_lettersInWord[toupper(c) - 'A'])
+        {
+            m_lettersInWord[toupper(c) - 'A'] = true;
+            uniqueLetters++;
+        }
+    }
+    return uniqueLetters;
+}
 
 
 
