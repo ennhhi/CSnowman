@@ -5,7 +5,7 @@ Unfortunately I simply can't view some files so we'll have to ignore **SampleExe
 ## Sample Output
 It should look like this: https://youtu.be/1C9ZrDrdiow
 
-# Objective tl;dr: Write implementation files for all the header files. Header files and main.cpp are already written.
+# Assignment tl;dr: Write implementation files for all the header files. Header files and main.cpp are already written.
 # Objective
 Your objective for this project is to work on several classes to construct a game called CSnowman.  It is the politically correct version for “Hangman” with the same rules.  You’ll have eight (8) tries to guess the correct word/phrase.  For every incorrect guess, a body part of the snowman will be drawn. Now how will the game be constructed and what classes are we going to make in order for the game to work?
 
