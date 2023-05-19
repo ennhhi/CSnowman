@@ -8,8 +8,8 @@
 
 const int NUM_TRIES = 8;
 const int NUM_ALPHA_CHARS = 26;
-const int SCREEN_DIM = 50;
-const int SLEPP_NUM_SNOWMAN = 1;
+const int SCREEN_DIM = 80;
+const int SLEEP_NUM_SNOWMAN = 1;
 
 class CSnowmanGame
 {
