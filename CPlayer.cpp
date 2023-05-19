@@ -7,8 +7,6 @@
 #include "CPlayer.h"
 using namespace std;
 
-const int SLEEP_NUM_PLAYER = 1;
-
 // === CPlayer::CPlayer ===============================
 //
 // This is the CPlayer default constructor. It allocated space from the 
@@ -21,7 +19,7 @@ const int SLEEP_NUM_PLAYER = 1;
 // ====================================================
 CPlayer::CPlayer() 
 {
-    m_name = new char[13];
+    m_name = new char[strlen("Guest Player") + 1];
     strcpy(m_name, "Guest Player");
     m_gameResetted = false;
 }
@@ -37,8 +35,7 @@ CPlayer::CPlayer()
 // ====================================================
 CPlayer::CPlayer(const char* name) 
 {
-    int length = strlen(name);
-    m_name = new char[length + 1];
+    m_name = new char[strlen(name) + 1];
     strcpy(m_name, name);
     m_gameResetted = false;
 }
@@ -71,8 +68,7 @@ CPlayer::~CPlayer()
 void CPlayer::SetName(const char* name) 
 {
     delete[] m_name;
-    int length = strlen(name);
-    m_name = new char[length + 1];
+    m_name = new char[strlen(name) + 1];
     strcpy(m_name, name);
 }
 
@@ -109,14 +105,17 @@ const char* CPlayer::GetName() const
 // ====================================================
 void CPlayer::Start() 
 {
-    if (!m_gameResetted) {
+    if (!m_gameResetted)
+    {
         cout << "Welcome, " << m_name << "!" << endl;
-        cout << "Loading game..." << endl;
+        cout << "Loading the game..." << endl;
         sleep(SLEEP_NUM_PLAYER);
     }
 
-    cout << "Game started!" << endl;
-    CSnowmanGame::Start();
+    m_game.Start();
+
+    cout << "Game Over!" << endl;
+    sleep(SLEEP_NUM_PLAYER);
 }
 
 // === CPlayer::Reset =================================
@@ -135,9 +134,10 @@ void CPlayer::Start()
 // ====================================================
 void CPlayer::Reset() 
 {
-    cout << "Restarting game..." << endl;
-    cout << "Reloading game..." << endl;
+    cout << "Restarting the game..." << endl;
+    cout << "Reloading the game..." << endl;
     sleep(SLEEP_NUM_PLAYER);
 
-    CSnowmanGame::Reset();
+    m_game.Reset();
+    m_gameResetted = true;
 }
