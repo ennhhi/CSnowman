@@ -19,9 +19,9 @@ const int SLEEP_NUM_PLAYER = 1;
 //		none
 //
 // ====================================================
-CPlayer::CPlayer()
+CPlayer::CPlayer() 
 {
-    m_name = new char[strlen("Guest Player") + 1];
+    m_name = new char[13];
     strcpy(m_name, "Guest Player");
     m_gameResetted = false;
 }
@@ -35,9 +35,10 @@ CPlayer::CPlayer()
 //		name	[IN]	-- a char pointer to a given name
 //
 // ====================================================
-CPlayer::CPlayer(const char* name)
+CPlayer::CPlayer(const char* name) 
 {
-    m_name = new char[strlen(name) + 1];
+    int length = strlen(name);
+    m_name = new char[length + 1];
     strcpy(m_name, name);
     m_gameResetted = false;
 }
@@ -67,10 +68,11 @@ CPlayer::~CPlayer()
 //		none
 //
 // ====================================================
-void CPlayer::SetName(const char* name)
+void CPlayer::SetName(const char* name) 
 {
     delete[] m_name;
-    m_name = new char[strlen(name) + 1];
+    int length = strlen(name);
+    m_name = new char[length + 1];
     strcpy(m_name, name);
 }
 
@@ -85,7 +87,7 @@ void CPlayer::SetName(const char* name)
 //		a const char*
 //
 // ====================================================
-const char* CPlayer::GetName() const
+const char* CPlayer::GetName() const 
 {
     return m_name;
 }
@@ -105,18 +107,16 @@ const char* CPlayer::GetName() const
 //		none
 //
 // ====================================================
-void CPlayer::Start()
+void CPlayer::Start() 
 {
-    CSnowmanGame game;
-    
-    if (!m_gameResetted)
-    {
+    if (!m_gameResetted) {
         cout << "Welcome, " << m_name << "!" << endl;
         cout << "Loading game..." << endl;
+        sleep(SLEEP_NUM_PLAYER);
     }
-    
-    game.Start();
-    sleep(SLEEP_NUM_PLAYER);
+
+    cout << "Game started!" << endl;
+    // Call the Start function of the CSnowmanGame object
 }
 
 // === CPlayer::Reset =================================
@@ -133,13 +133,11 @@ void CPlayer::Start()
 //		none
 //
 // ====================================================
-void CPlayer::Reset()
+void CPlayer::Reset() 
 {
-    CSnowmanGame game;
-    
     cout << "Restarting game..." << endl;
     cout << "Reloading game..." << endl;
-    
-    game.Reset();
     sleep(SLEEP_NUM_PLAYER);
+
+    // Call the Reset function of the CSnowmanGame object
 }
