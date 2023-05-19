@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <cstdlib>	// srand function
 #include <ctime>	// time function
 #include "CWords.h"
@@ -22,7 +23,12 @@ using namespace std;
 CWords::CWords()
 {
     m_numWords = 0;
-    m_words = new string[NUM_WORDS];
+    
+    for (int i = 0; i < NUM_WORDS; i++)
+    {
+        m_words[i] = nullptr;
+    }
+    
     ReadFile();
 }
 
@@ -37,7 +43,10 @@ CWords::CWords()
 // ===================================================
 CWords::~CWords()
 {
-    delete[] m_words;
+    for (int i = 0; i < m_numWords; i++)
+    {
+        delete[] m_words[i];
+    }
 }
 
 
@@ -57,9 +66,9 @@ CWords::~CWords()
 // ===================================================
 const char* CWords::GetRandomWord()
 {
-    srand(time(nullptr));
-    int randomIndex = rand() % m_numWords;
-    return m_words[randomIndex].c_str();
+    srand(static_cast<unsigned int>(time(nullptr))); // Seed the random function with current time
+    int randomIndex = rand() % m_numWords; // Generate a random index within the range of m_numWords
+    return m_words[randomIndex];
 }
 
 
@@ -77,18 +86,22 @@ const char* CWords::GetRandomWord()
 // ===================================================
 void CWords::ReadFile()
 {
-    ifstream file("words.txt");
-    if (!file)
+    ifstream file("words.txt"); // Assuming the words are stored in a file named "words.txt"
+    if (file.is_open())
     {
-        cerr << "Error opening file." << endl;
-        exit(1);
+        string word;
+        int i = 0;
+        while (getline(file, word) && i < NUM_WORDS)
+        {
+            m_words[i] = new char[word.length() + 1]; // Allocate memory for the word (+1 for null terminator)
+            strcpy(m_words[i], word.c_str()); // Copy the word into dynamically allocated memory
+            i++;
+        }
+        m_numWords = i;
+        file.close();
     }
-
-    string word;
-    while (getline(file, word) && m_numWords < NUM_WORDS)
+    else
     {
-        m_words[m_numWords++] = word;
+        cout << "Error opening file." << endl;
     }
-
-    file.close();
 }
