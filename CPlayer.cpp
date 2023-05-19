@@ -116,7 +116,7 @@ void CPlayer::Start()
     }
 
     cout << "Game started!" << endl;
-    // Call the Start function of the CSnowmanGame object
+    CSnowmanGame::Start();
 }
 
 // === CPlayer::Reset =================================
@@ -139,5 +139,5 @@ void CPlayer::Reset()
     cout << "Reloading game..." << endl;
     sleep(SLEEP_NUM_PLAYER);
 
-    // Call the Reset function of the CSnowmanGame object
+    CSnowmanGame::Reset();
 }
