@@ -41,7 +41,7 @@ CSnowmanGame::CSnowmanGame()
 // ===================================================
 void CSnowmanGame::Start()
 {
-    const char* title = "xyz";
+    const char* title = "Snowman";
     bool header = true;
     bool footer = true;
     bool headerspace = true;
@@ -58,7 +58,19 @@ void CSnowmanGame::Start()
         GetUserGuess();
     }
 
-    system("clear");
+    // I'm guessing I have to add something here to check whether the word has
+    // been guessed, but I have no clue how to implement that. Maybe something
+    // with strcmp?
+    
+    if(m_guessedWord == true)
+    {
+        cout << "Grats! You guessed it! It's " << m_wordToGuess << endl;
+    }
+    else
+    {
+        cout << "Sorry, out of tries! It was " << m_wordToGuess
+             << ". Maybe next time..." << endl;
+    }
 }
 
 
@@ -77,18 +89,23 @@ void CSnowmanGame::Start()
 void CSnowmanGame::Reset()
 {
     m_numTries = NUM_TRIES;
-    m_wordToGuess[0] = '\0';
-    memset(m_letterGuessed, false, sizeof(m_letterGuessed));
-    memset(m_lettersInWord, false, sizeof(m_lettersInWord));
+   
+    for(int i = 0; i < NUM_ALPHA_CHARS; i++)
+    {
+        m_letterGuessed[i] = false;
+    }
+    
+    for(int i = 0; i < NUM_ALPHA_CHARS; i++)
+    {
+        m_lettersInWord[i] = false;
+    }
+    
     m_wordLen = 0;
+    string word = m_words.GetRandomWord();
+    m_wordLen = word.length();
+    strcpy(m_wordToGuess, word.c_str());
     m_guessedWord = false;
     m_numUniqueLetters = 0;
-
-    const char* randomWord = m_words.GetRandomWord();
-    strncpy(m_wordToGuess, randomWord, sizeof(m_wordToGuess));
-    m_wordToGuess[sizeof(m_wordToGuess) - 1] = '\0';
-
-    m_numUniqueLetters = GetNumUniqueLetters();
 }
 
 
@@ -109,14 +126,38 @@ void CSnowmanGame::Reset()
 // ===================================================
 void CSnowmanGame::DrawAvailLetters()
 {
-    cout << "Available Letters: ";
-    for (int i = 0; i < NUM_ALPHA_CHARS; i++)
+    DispTitle("Available Letters", true, true, true, true);
+    
+    cout << endl;
+    cout << "\t\t\t   ";
+    
+    for(int i = 0; i < (NUM_ALPHA_CHARS / 2); i ++)
     {
-        if (!m_letterGuessed[i])
-            cout << static_cast<char>(i + 'A') << " ";
+        if(!m_letterGuessed[i])
+        {
+            cout << static_cast<char>(i + 'A') << " "; // chatgpt gave a lot of this i + A stuff, what does it mean?
+        }
         else
-            cout << "  ";
+        {
+            cout << " ";
+        }
     }
+    
+    cout << endl;
+    cout << "\t\t\t   ";
+    
+    for(int i = 13; i < NUM_ALPHA_CHARS; i ++)
+    {
+        if(!m_letterGuessed[i])
+        {
+            cout << static_cast<char>(i + 'A') << " ";
+        }
+        else
+        {
+            cout << " ";
+        }
+    }
+    
     cout << endl;
 }
 
@@ -138,15 +179,25 @@ void CSnowmanGame::DrawAvailLetters()
 // ===================================================
 void CSnowmanGame::DispWordDash()
 {
-    cout << "Word to Guess: ";
-    for (int i = 0; i < m_wordLen; i++)
+    DispTitle("", true, false, false, false);
+    cout << "\t\t       Guess the Word (You have " << m_numTries << " tries)";
+    DispTitle("", false, true, false, false);
+    
+    cout << "\t\t\t\t";
+    
+    for(int i = 0; i < m_wordLen; i++)
     {
-        if (isalpha(m_wordToGuess[i]) && m_lettersInWord[toupper(m_wordToGuess[i]) - 'A'])
-            cout << m_wordToGuess[i] << " ";
+        if(isalpha(m_wordToGuess[i]) && m_lettersInWord[toupper(m_wordToGuess[i]) - 'A'])
+        {
+            cout << m_wordToGuess[i];
+        }
         else
-            cout << "_ ";
+        {
+            cout << "_";
+        }
     }
-    cout << endl;
+    
+    cout << endl << endl;
 }
 
 
@@ -173,6 +224,7 @@ void CSnowmanGame::GetUserGuess()
     if (IsValidGuess(guess))
     {
         bool correctGuess = false;
+        
         for (int i = 0; i < m_wordLen; i++)
         {
             if (toupper(m_wordToGuess[i]) == toupper(guess))
@@ -183,8 +235,10 @@ void CSnowmanGame::GetUserGuess()
         }
 
         if (!correctGuess)
+        {
             m_numTries--;
-
+        }
+        
         m_letterGuessed[toupper(guess) - 'A'] = true;
         m_guessedWord = memcmp(m_letterGuessed, m_lettersInWord, sizeof(m_letterGuessed)) == 0;
 
@@ -256,6 +310,7 @@ bool CSnowmanGame::IsValidGuess(char guess)
 int CSnowmanGame::GetNumUniqueLetters()
 {
     int count = 0;
+    
     for (int i = 0; i < m_wordLen; i++)
     {
         if (isalpha(m_wordToGuess[i]) && !m_lettersInWord[toupper(m_wordToGuess[i]) - 'A'])
@@ -390,7 +445,7 @@ void CSnowmanGame::DispTitle(char const* title, bool header, bool footer, bool h
     }
 }
 
-// The rest of this file is code for the "graphics" of the game. They seem to be already done and way too difficult to copy. See screenshots in readme.
+// The rest of this file is code for the "graphics" of the game. They seem to be already done and way too annoying to copy. See screenshots in readme.
 // Functions not written:
 // DispSnowmanTitle
 // DrawSnowmanPart0-8
