@@ -351,7 +351,7 @@ void CSnowmanGame::DispTitle(char const* title, bool header, bool footer, bool h
         
         cout << endl;
         
-        if(headerSpace = true)
+        if(headerSpace == true)
         {
             cout << endl;
         }
