@@ -286,31 +286,31 @@ void CSnowmanGame::DrawSnowman(int numTries) const
     switch (numTries)
     {
     case 0:
-        DrawSnowmanPart0();
+        DrawSnowmanPart8();
         break;
     case 1:
-        DrawSnowmanPart1();
+        DrawSnowmanPart7();
         break;
     case 2:
-        DrawSnowmanPart2();
+        DrawSnowmanPart6();
         break;
     case 3:
-        DrawSnowmanPart3();
+        DrawSnowmanPart5();
         break;
     case 4:
         DrawSnowmanPart4();
         break;
     case 5:
-        DrawSnowmanPart5();
+        DrawSnowmanPart3();
         break;
     case 6:
-        DrawSnowmanPart6();
+        DrawSnowmanPart2();
         break;
     case 7:
-        DrawSnowmanPart7();
+        DrawSnowmanPart1();
         break;
     case 8:
-        DrawSnowmanPart8();
+        DrawSnowmanPart0();
         break;
     }
 }
