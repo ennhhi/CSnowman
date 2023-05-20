@@ -93,7 +93,7 @@ const char* CWords::GetRandomWord()
 // ===================================================
 void CWords::ReadFile()
 {
-    ifstream file("ListofMarvelCharacters.txt");
+    ifstream file("ListOfMarvelCharacters.txt");
     
     if (!file)
     {
