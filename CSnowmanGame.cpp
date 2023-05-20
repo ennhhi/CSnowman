@@ -124,7 +124,7 @@ void CSnowmanGame::Reset()
 //		none
 //
 // ===================================================
-void CSnowmanGame::DrawAvailLetters()
+void CSnowmanGame::DrawAvailLetters() const
 {
     DispTitle("Available Letters", true, true, true, true);
     
@@ -177,7 +177,7 @@ void CSnowmanGame::DrawAvailLetters()
 //		none
 //
 // ===================================================
-void CSnowmanGame::DispWordDash()
+void CSnowmanGame::DispWordDash() const
 {
     DispTitle("", true, false, false, false);
     cout << "\t\t       Guess the Word (You have " << m_numTries << " tries)";
