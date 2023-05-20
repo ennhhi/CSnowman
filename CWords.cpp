@@ -64,7 +64,7 @@ CWords::~CWords()
 //		a const char pointer that contains the string of the random word/phrase
 //
 // ===================================================
-const char* CWords::GetRandomWord()
+const char* CWords::GetRandomWord() const
 {
     srand(static_cast<unsigned int>(time(nullptr))); 
     
