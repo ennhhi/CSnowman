@@ -64,7 +64,7 @@ CWords::~CWords()
 //		a const char pointer that contains the string of the random word/phrase
 //
 // ===================================================
-const char* CWords::GetRandomWord()
+const char* CWords::GetRandomWord() const
 {
     srand(static_cast<unsigned int>(time(nullptr))); 
     
@@ -93,7 +93,7 @@ const char* CWords::GetRandomWord()
 // ===================================================
 void CWords::ReadFile()
 {
-    ifstream file("ListofMarvelCharacters.txt");
+    ifstream file("ListOfMarvelCharacters.txt");
     
     if (!file)
     {
@@ -107,6 +107,7 @@ void CWords::ReadFile()
     while(getline(file, word) && wordCount < NUM_WORDS)
     {
         m_words[wordCount] = new char[CHAR_SIZE];
+        // do something here to account for SPACES (' ') and NUMBERS (0-9)
         strncpy(m_words[wordCount], word.c_str(), CHAR_SIZE - 1);
         m_words[wordCount][CHAR_SIZE - 1] = '\0';
         wordCount++;

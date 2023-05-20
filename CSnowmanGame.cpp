@@ -124,7 +124,7 @@ void CSnowmanGame::Reset()
 //		none
 //
 // ===================================================
-void CSnowmanGame::DrawAvailLetters()
+void CSnowmanGame::DrawAvailLetters() const
 {
     DispTitle("Available Letters", true, true, true, true);
     
@@ -177,7 +177,7 @@ void CSnowmanGame::DrawAvailLetters()
 //		none
 //
 // ===================================================
-void CSnowmanGame::DispWordDash()
+void CSnowmanGame::DispWordDash() const
 {
     DispTitle("", true, false, false, false);
     cout << "\t\t       Guess the Word (You have " << m_numTries << " tries)";
@@ -240,14 +240,24 @@ void CSnowmanGame::GetUserGuess()
         }
         
         m_letterGuessed[toupper(guess) - 'A'] = true;
-        m_guessedWord = memcmp(m_letterGuessed, m_lettersInWord, sizeof(m_letterGuessed)) == 0;
+        // check if the player has fully guessed the word
+        m_guessedWord = true;
+        for (int i = 0; i < m_wordLen; i++)
+        {
+            // if any of the letters haven't been guessed, set m_guessedWord to false
+            if (!m_lettersInWord[toupper(m_wordToGuess[i]) - 'A'])
+            {
+                m_guessedWord = false;
+                break;
+            }
+        }
 
         if (!correctGuess)
         {
             cout << "Wrong guess!" << endl;
             sleep(SLEEP_NUM_SNOWMAN);
         }
-        else if (m_guessedWord)
+        else
         {
             cout << "Correct guess!" << endl;
             sleep(SLEEP_NUM_SNOWMAN);

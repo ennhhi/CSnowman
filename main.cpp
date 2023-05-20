@@ -32,7 +32,7 @@ int main()
 			player1.Reset();
 		}
 
-	} while (userResp == 'Y')
+	} while (userResp == 'Y');
 
 	cout << "\n\nThanks for playing " << player1.GetName() << "!\n";
 	cout << "Goodbye!\n\n";
