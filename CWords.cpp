@@ -107,6 +107,7 @@ void CWords::ReadFile()
     while(getline(file, word) && wordCount < NUM_WORDS)
     {
         m_words[wordCount] = new char[CHAR_SIZE];
+        // do something here to account for SPACES (' ') and NUMBERS (0-9)
         strncpy(m_words[wordCount], word.c_str(), CHAR_SIZE - 1);
         m_words[wordCount][CHAR_SIZE - 1] = '\0';
         wordCount++;
