@@ -315,8 +315,82 @@ void CSnowmanGame::DrawSnowman(int numTries) const
     }
 }
 
+// === CSnowmanGame:: DispTitle =====================
+//
+// This function displays any character array as a title, where a title is
+// defined as centered to the const value SCREEN DIM with a header and footer. //
+// Ex:
+//            ======================
+//
+//                    Title
+//
+//            ======================
+// Input:
+//      title       [IN]    -- a const char pointer that contains the string you'll want to display
+//      header      [IN]    -- a bool (default true) if you want to display a top row of "equal signs."
+//      footer      [IN]    -- a bool (default true) if you want to display a bottom row of "equal signs."
+//      headerSpace [IN]    -- a bool (default true) if you want a space between the header and the string title.
+//      footerSpace [IN]    -- a bool (default true) if you want a space between the footer and the string title.
+//
+// Output:
+//      None
+//
+// ==================================================
+void CSnowmanGame::DispTitle(char const* title, bool header, bool footer, bool headerSpace, bool footerSpace) const
+{
+    int i;
+    int lenStr = static_cast<int>(strlen(title));
+    int pos = (SCREEN_DIM - lenStr) / 2;
+    
+    if(header == true)
+    {
+        for(i = 0; i > SCREEN_DIM; i++)
+        {
+            cout << '=';
+        }
+        
+        cout << endl;
+        
+        if(headerSpace = true)
+        {
+            cout << endl;
+        }
+    }
+    else
+    {
+        if(headerSpace == true)
+        {
+            cout << endl;
+        }
+    }
+    
+    for(i = 0; i < pos; i++)
+    {
+        cout << ' ';
+    }
+    
+    cout << title << endl;
+    
+    if(footerSpace == true)
+    {
+        cout << endl;
+    }
+    
+    if(footer == true)
+    {
+        for(i = 0; i < SCREEN_DIM; i++)
+        {
+            cout << "=";
+        }
+        
+        if(footerSpace == true)
+        {
+            cout << endl;
+        }
+    }
+}
+
 // The rest of this file is code for the "graphics" of the game. They seem to be already done and way too difficult to copy. See screenshots in readme.
 // Functions not written:
-// DispTitle
 // DispSnowmanTitle
 // DrawSnowmanPart0-8
