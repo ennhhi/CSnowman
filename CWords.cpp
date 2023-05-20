@@ -66,9 +66,16 @@ CWords::~CWords()
 // ===================================================
 const char* CWords::GetRandomWord()
 {
-    srand(static_cast<unsigned int>(time(nullptr))); // Seed the random function with current time
-    int randomIndex = rand() % m_numWords; // Generate a random index within the range of m_numWords
-    return m_words[randomIndex];
+    srand(static_cast<unsigned int>(time(nullptr))); 
+    
+    if(m_numWords > 0)
+    {
+        int randomIndex = rand() % m_numWords;
+        
+        return m_words[randomIndex];
+    }
+    
+    return nullptr;
 }
 
 
@@ -86,22 +93,36 @@ const char* CWords::GetRandomWord()
 // ===================================================
 void CWords::ReadFile()
 {
-    ifstream file("words.txt"); // Assuming the words are stored in a file named "words.txt"
-    if (file.is_open())
+    ifstream file("ListofMarvelCharacters.txt");
+    
+    if (!file)
     {
-        string word;
-        int i = 0;
-        while (getline(file, word) && i < NUM_WORDS)
-        {
-            m_words[i] = new char[word.length() + 1]; // Allocate memory for the word (+1 for null terminator)
-            strcpy(m_words[i], word.c_str()); // Copy the word into dynamically allocated memory
-            i++;
-        }
-        m_numWords = i;
-        file.close();
+        cerr << "Error opening word list file." << endl;
+        exit(1);
     }
-    else
+    
+    string word;
+    int wordCount;
+    
+    while(getline(file, word) && wordCount < NUM_WORDS)
     {
-        cout << "Error opening file." << endl;
+        m_words[wordCount] = new char[CHAR_SIZE];
+        strncpy(m_words[wordCount], word.c_str(), CHAR_SIZE - 1);
+        m_words[wordCount][CHAR_SIZE - 1] = '\0';
+        wordCount++;
     }
+    
+    m_numWords = wordCount;
+    
+    file.close();
 }
+
+
+
+
+
+
+
+
+
+
