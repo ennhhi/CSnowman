@@ -70,11 +70,6 @@ This contains the header and implementation for two functions to convert an int 
 
     IntToCStringLib.o -- An object file of the two functions.  This file has already been compiled (to keep hidden the implementation of the two functions).  If you are going to use the functions, you don’t need to compile it, but simply use the linker to link it to your executable file.
 
-Screenshots of the prompt:
-![Screenshot 2023-05-11 194719](https://github.com/Nyriki/CSnowman/assets/76397078/74656781-1f55-4bd8-9660-9a5cb0b1a008)
-![Screenshot 2023-05-11 194955](https://github.com/Nyriki/CSnowman/assets/76397078/4ec9de9b-cec9-4c35-9163-f1fd5c4df1df)
-![Screenshot 2023-05-11 195023](https://github.com/Nyriki/CSnowman/assets/76397078/57c813a2-7081-462e-9744-050463d3e33f)
-
 Screenshots of untranscribed code for CSnowmanGame.cpp:
 ![Screenshot 2023-05-19 163717](https://github.com/Nyriki/CSnowman/assets/76397078/a0fbc4aa-39e6-4985-ae22-cd6d97387d7c)
 ![Screenshot 2023-05-19 163816](https://github.com/Nyriki/CSnowman/assets/76397078/6196de68-5bc6-4a4b-b316-7f2a60993f9d)
